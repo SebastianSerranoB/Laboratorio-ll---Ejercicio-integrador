@@ -6,6 +6,7 @@
         {
             Console.WriteLine("hola mundo");
 
+            //pruebo commit
            // Numeracion numPrueba = new Numeracion(200, 0);
             // Console.WriteLine(numPrueba.BinarioADecimal("11000011010100000"));
 
