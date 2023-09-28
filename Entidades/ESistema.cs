@@ -1,0 +1,1 @@
+﻿enum Esistema { Decimal, Binario};
