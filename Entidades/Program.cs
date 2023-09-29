@@ -4,6 +4,11 @@
     {
         static void Main(string[] args)
         {
+
+            
+
+           /*
+              esese
             Numeracion n1 = new Numeracion("11", Esistema.Binario);
             Numeracion n2 = new Numeracion("01", Esistema.Binario);
             Numeracion n3 = new Numeracion("45", Esistema.Decimal);
@@ -44,6 +49,8 @@
             Console.WriteLine($"Multiplicacion mediante calculadora binaria: {calculadoraBinaria.Operar('*').Valor} en sistema {calculadoraBinaria.Operar('+').Sistema} ");
             Console.WriteLine($"Resta mediante calculadora binaria: {calculadoraBinaria.Operar('-').Valor} en sistema {calculadoraBinaria.Operar('+').Sistema} ");
             Console.WriteLine($"Ingreso x, deberia sumar mediante calculadora binaria: {calculadoraBinaria.Operar('x').Valor} en sistema {calculadoraBinaria.Operar('+').Sistema} ");
+
+            */
 
 
             
