@@ -34,12 +34,19 @@ namespace Entidades
             {
                 if (Sistema == Esistema.Binario)
                 {
-                    return DecimalABinario((int)this.valorNumerico);
-                    // return DecimalABinario(this.valorNumerico.ToString());
+                     return DecimalABinario(this.valorNumerico.ToString());
                 }
                 else
                 {
-                    return this.valorNumerico.ToString();
+                    if (this.valorNumerico == double.MinValue)
+                    {
+                        return "Numero invalido";
+                    }
+                    else
+                    {
+                        return this.valorNumerico.ToString();
+                    }
+                    
                 }
             }
                
@@ -85,7 +92,7 @@ namespace Entidades
                 {
                     this.valorNumerico = BinarioADecimal(valor);
                 }
-                else
+                else//permito que si ingreso un numero decimal, lo guarde y no tire error.
                 {
                     if ((decimal.TryParse(valor, out decimal valorIngresado)))
                     { 
@@ -93,7 +100,7 @@ namespace Entidades
                     }
                 }
             }
-             else if ((decimal.TryParse(valor, out decimal valorIngresado)))
+             else if ((decimal.TryParse(valor, out decimal valorIngresado))) 
             {
                     this.valorNumerico = (double)valorIngresado;
             }

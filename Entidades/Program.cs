@@ -5,10 +5,21 @@
         static void Main(string[] args)
         {
 
-            
+            /*
+            Numeracion numeroBinario = new Numeracion("hola", Esistema.Binario);
+            Console.WriteLine(numeroBinario.Valor); //Mensaje de error.
+            Numeracion numeroDecimal = new Numeracion("Holaa", Esistema.Decimal);
+            Console.WriteLine(numeroDecimal.Valor); //MIN VALUE, VALIDAR en valor?
+
+            Operacion calculadora = new Operacion(numeroBinario, numeroDecimal);
+
+            Console.WriteLine(calculadora.Operar('s').Valor); //MIN VALUE, VALIDAR
+            */
+
+
 
            /*
-              esese
+             
             Numeracion n1 = new Numeracion("11", Esistema.Binario);
             Numeracion n2 = new Numeracion("01", Esistema.Binario);
             Numeracion n3 = new Numeracion("45", Esistema.Decimal);
