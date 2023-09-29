@@ -6,6 +6,8 @@
         {
             Console.WriteLine("hola mundo");
 
+
+            //pruebo commit again
             //pruebo commit
            // Numeracion numPrueba = new Numeracion(200, 0);
             // Console.WriteLine(numPrueba.BinarioADecimal("11000011010100000"));
@@ -70,6 +72,14 @@
             //actualizamos los getters y setters para que usen propiedades
 
             //si un num dice ser binario y entra un 23, es minvalue porque es mi forma de decir error
+
+
+            //si puso binario ingresa binario, si puso decimal decimal, pero, en la calculadora, desde el form por defecto esta en decimal, luego el resultado si quiere lo puede ver en binario
+
+
+            //no hay problema con el warning de equals, si queres quitarte el warning tenes que hacerle un ovverrride al metodo
+
+
         }
     }
 }
