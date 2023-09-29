@@ -12,12 +12,10 @@ namespace Entidades
         private Esistema sistema;
         private double valorNumerico;
 
-        //objeto d etipo resultado , convertirA
-        //aca elegis como se va a guardar, cuando recibis el input de la calculadora, lo recibis siempre instancia en decimal
+        
         //los txtOperandos 
 
-        
-        public Numeracion(double valorNumerico, Esistema sistema) :  this(valorNumerico.ToString(), sistema) //este va a llamar a numeracion :this(valornumerico.tostring()) y valida e inicia el otro, aca en teoria podria ingresar un binario tambien por eso, pero no te enrosques con este tema
+        public Numeracion(double valorNumerico, Esistema sistema) :  this(valorNumerico.ToString(), sistema)//reutilizamos inicializarValores (validaciones)
         {
         }
         public Numeracion(string valor, Esistema sistema)
@@ -193,6 +191,7 @@ namespace Entidades
             }
             else if(sistema == Esistema.Binario)
             {
+                
                 retorno = DecimalABinario(this.valorNumerico.ToString());
             }
            
@@ -242,21 +241,21 @@ namespace Entidades
 
         public static Numeracion operator +(Numeracion n1, Numeracion n2)
         {
-            return new Numeracion(n1.valorNumerico + n1.valorNumerico, n1.sistema);
+            return new Numeracion(n1.valorNumerico + n2.valorNumerico, n1.sistema);
         }
 
         public static Numeracion operator -(Numeracion n1, Numeracion n2)
         {
-            return new Numeracion(n1.valorNumerico - n1.valorNumerico, n1.sistema);
+            return new Numeracion(n1.valorNumerico - n2.valorNumerico, n1.sistema);
         }
 
         public static Numeracion operator /(Numeracion n1, Numeracion n2)
         {
-            return new Numeracion(n1.valorNumerico / n1.valorNumerico, n1.sistema);
+            return new Numeracion(Math.Round(n1.valorNumerico / n2.valorNumerico,5), n1.sistema);
         }
         public static Numeracion operator *(Numeracion n1, Numeracion n2)
         {
-            return new Numeracion(n1.valorNumerico * n1.valorNumerico, n1.sistema);
+            return new Numeracion(n1.valorNumerico * n2.valorNumerico, n1.sistema);
         }
 
         

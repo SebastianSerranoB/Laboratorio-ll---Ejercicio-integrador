@@ -50,18 +50,44 @@ namespace Entidades
             }
         }
 
-        public Numeracion Operar(char Operador)
+        public Numeracion Operar(char operador)
         {
-            //va a trabajr con primer y segundo operando
-           
-            //validar si el char ingresado es un caracter valido
-            //realizar las operaciones correspondientes valiendonos de
-            // las sobrecargas de operadores para Numeracion, etc.
+            if (this.PrimerOperando != this.SegundoOperando)
+            {
+                return new Numeracion(double.MinValue, Esistema.Decimal);
 
-            //Por defecto ejectua una suma++++, 
-            //pero hay que validar 'operador' para casos - ,*, /
+            }
+            else
+            {
+                switch (operador)
+                {
+                    case '-':
+                        return this.PrimerOperando - this.SegundoOperando;
 
-            return this.primerOperando;
+                    case '/':
+                        if (this.SegundoOperando.Valor == "0" || this.PrimerOperando.Valor == "0")
+                        {
+                            return new Numeracion(double.MinValue, Esistema.Decimal);
+                        }
+                        else
+                        {
+                            return this.PrimerOperando / this.SegundoOperando;
+                        }
+
+
+                    case '*':
+                        return this.PrimerOperando * this.SegundoOperando;
+
+
+                    default:
+                        return this.PrimerOperando + this.SegundoOperando;
+
+                }
+
+
+            }
+            
+
         }
 
 
