@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Numeracion
+    public class Numeracion
     {
         private Esistema sistema;
         private double valorNumerico;

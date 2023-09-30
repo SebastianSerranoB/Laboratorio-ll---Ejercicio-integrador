@@ -39,8 +39,8 @@
             this.txtPrimerOperador = new System.Windows.Forms.TextBox();
             this.cmbOperacion = new System.Windows.Forms.ComboBox();
             this.grpSistema = new System.Windows.Forms.GroupBox();
-            this.rdbDecimal = new System.Windows.Forms.RadioButton();
             this.rdbBinario = new System.Windows.Forms.RadioButton();
+            this.rdbDecimal = new System.Windows.Forms.RadioButton();
             this.grpSistema.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@
             this.btnOperar.TabIndex = 3;
             this.btnOperar.Text = "Operar";
             this.btnOperar.UseVisualStyleBackColor = true;
+            this.btnOperar.Click += new System.EventHandler(this.btnOperar_Click);
             // 
             // btnLimpiar
             // 
@@ -61,6 +62,7 @@
             this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnCerrar
             // 
@@ -70,6 +72,7 @@
             this.btnCerrar.TabIndex = 5;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblPrimerOperando
             // 
@@ -119,6 +122,7 @@
             this.txtSegundoOperador.ShortcutsEnabled = false;
             this.txtSegundoOperador.Size = new System.Drawing.Size(196, 43);
             this.txtSegundoOperador.TabIndex = 2;
+            this.txtSegundoOperador.TextChanged += new System.EventHandler(this.txtSegundoOperador_TextChanged);
             // 
             // txtPrimerOperador
             // 
@@ -128,6 +132,7 @@
             this.txtPrimerOperador.ShortcutsEnabled = false;
             this.txtPrimerOperador.Size = new System.Drawing.Size(196, 43);
             this.txtPrimerOperador.TabIndex = 0;
+            this.txtPrimerOperador.TextChanged += new System.EventHandler(this.txtPrimerOperador_TextChanged);
             // 
             // cmbOperacion
             // 
@@ -140,7 +145,8 @@
             "+",
             "-",
             "*",
-            "/"});
+            "/",
+            ""});
             this.cmbOperacion.Location = new System.Drawing.Point(275, 248);
             this.cmbOperacion.Name = "cmbOperacion";
             this.cmbOperacion.Size = new System.Drawing.Size(121, 23);
@@ -157,18 +163,6 @@
             this.grpSistema.TabStop = false;
             this.grpSistema.Text = "Representar resultado en:";
             // 
-            // rdbDecimal
-            // 
-            this.rdbDecimal.AutoSize = true;
-            this.rdbDecimal.Checked = true;
-            this.rdbDecimal.Location = new System.Drawing.Point(7, 25);
-            this.rdbDecimal.Name = "rdbDecimal";
-            this.rdbDecimal.Size = new System.Drawing.Size(68, 19);
-            this.rdbDecimal.TabIndex = 7;
-            this.rdbDecimal.TabStop = true;
-            this.rdbDecimal.Text = "Decimal";
-            this.rdbDecimal.UseVisualStyleBackColor = true;
-            // 
             // rdbBinario
             // 
             this.rdbBinario.AutoSize = true;
@@ -176,9 +170,20 @@
             this.rdbBinario.Name = "rdbBinario";
             this.rdbBinario.Size = new System.Drawing.Size(62, 19);
             this.rdbBinario.TabIndex = 8;
-            this.rdbBinario.TabStop = true;
             this.rdbBinario.Text = "Binario";
             this.rdbBinario.UseVisualStyleBackColor = true;
+            this.rdbBinario.CheckedChanged += new System.EventHandler(this.rdbBinario_CheckedChanged);
+            // 
+            // rdbDecimal
+            // 
+            this.rdbDecimal.AutoSize = true;
+            this.rdbDecimal.Location = new System.Drawing.Point(7, 25);
+            this.rdbDecimal.Name = "rdbDecimal";
+            this.rdbDecimal.Size = new System.Drawing.Size(68, 19);
+            this.rdbDecimal.TabIndex = 7;
+            this.rdbDecimal.Text = "Decimal";
+            this.rdbDecimal.UseVisualStyleBackColor = true;
+            this.rdbDecimal.CheckedChanged += new System.EventHandler(this.rdbDecimal_CheckedChanged);
             // 
             // FrmCalculadora
             // 
@@ -203,6 +208,8 @@
             this.Name = "FrmCalculadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora de: Sebastian Serrano";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCalculadora_FormClosing);
+            this.Load += new System.EventHandler(this.FrmCalculadora_Load);
             this.grpSistema.ResumeLayout(false);
             this.grpSistema.PerformLayout();
             this.ResumeLayout(false);

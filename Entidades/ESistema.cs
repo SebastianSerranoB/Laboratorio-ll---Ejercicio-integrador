@@ -1,1 +1,1 @@
-﻿enum Esistema { Decimal, Binario};
+﻿public enum Esistema { Decimal, Binario};
