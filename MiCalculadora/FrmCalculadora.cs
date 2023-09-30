@@ -88,7 +88,7 @@ namespace MiCalculadora
         {
             if (this.resultado is not null)
             {
-                this.lblResultado.Text = "Resultado: " + this.resultado.ConvertirA(this.sistema);
+               this.lblResultado.Text = "Resultado: " + this.resultado.ConvertirA(this.sistema);
             }
             
         }

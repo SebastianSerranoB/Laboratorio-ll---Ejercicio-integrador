@@ -175,15 +175,24 @@ namespace Entidades
         {
             string retorno = "null";
 
-            if (sistema == Esistema.Decimal)
+            if (this.valorNumerico == double.MinValue)
             {
-                retorno = this.valorNumerico.ToString();
+                retorno = "Numero invalido";
             }
-            else if(sistema == Esistema.Binario)
+            else
             {
-                retorno = DecimalABinario(this.valorNumerico.ToString());
+                if (sistema == Esistema.Decimal)
+                {
+                    retorno = this.valorNumerico.ToString();
+                }
+                else if (sistema == Esistema.Binario)
+                {
+                    retorno = DecimalABinario(this.valorNumerico.ToString());
+                }
+
             }
-           
+
+          
             return retorno;
         }
        
