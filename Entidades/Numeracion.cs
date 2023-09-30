@@ -6,16 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Entidades
-{
+{   /// <summary> Class <c>Numeracion</c> Modela un numero, con su valor y el sistema numerico correspondiente. </summary>
     public class Numeracion
     {
         private Esistema sistema;
         private double valorNumerico;
 
-        
-        //los txtOperandos 
-
-        public Numeracion(double valorNumerico, Esistema sistema) :  this(valorNumerico.ToString(), sistema)//reutilizamos inicializarValores (validaciones)
+        /// <summary>
+        /// ctor, realiza las validaciones correspondientes
+        /// </summary>
+        /// <param name="valorNumerico"></param>
+        /// <param name="sistema"></param>
+        public Numeracion(double valorNumerico, Esistema sistema) :  this(valorNumerico.ToString(), sistema)
         {
         }
         public Numeracion(string valor, Esistema sistema)
@@ -28,6 +30,10 @@ namespace Entidades
         {
             get { return this.sistema; }
         }
+       
+        /// <summary>
+        /// Propiedad, retorna el valorNumerico en formato string en el Esistema correspondiente.
+        /// </summary>
         public string Valor
         {
             get 
@@ -51,43 +57,22 @@ namespace Entidades
             }
                
         }
-
+       
+        /// <summary>
+        /// Inicializa los valores Esistema y valorNumerico, validandolos previamente.
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <param name="sistema"></param>
         private void InicializarValores(string valor, Esistema sistema)
         {
             this.valorNumerico = double.MinValue;
             this.sistema = Esistema.Decimal;
-            //por defecto
+           
             
-            /*
-            if (EsBinario(valor)) // si aca te pasan un 10, te lo guarda como un 2, error
-            {
-                this.valorNumerico = BinarioADecimal(valor);
-            }
-            else if ((decimal.TryParse(valor, out decimal valorIngresado)))
-            {
-                this.valorNumerico = (double)valorIngresado;
-            }
-
             if (sistema == Esistema.Binario)
             {
                 this.sistema = Esistema.Binario;
-            }
-            else
-            {
-                this.sistema = Esistema.Decimal;
-            }
-            */
-
-
-            
-
-
-            if (sistema == Esistema.Binario)
-            {
-                this.sistema = Esistema.Binario;
-                //si bien el metodo BinarioADecimal hace esta validacion, binarioADecimal retorna 0 en el error, a mi me interesa diferencia cuando es error, y cuando es un 0 valido.
-                //como se si el usuario ingreso en decimales o en binario, decimal(10) binario = 2; unos y ceros. O asumimos que siempre ingresa en decimal?
-                //El metodo BinarioADecimal y EsBinario estaria pintado si nunca ingresan binarios. 
+                
                 if (EsBinario(valor)) 
                 {
                     this.valorNumerico = BinarioADecimal(valor);
@@ -107,11 +92,16 @@ namespace Entidades
 
         }
 
+
+        /// <summary>
+        /// Convierte un numero en sistema binario a decimal.
+        /// </summary>
+        /// <param name="valor"></param> numero en sistema binario
+        /// <returns></returns>
         private double BinarioADecimal(string valor)
         {
             double valorDecimal = 0;
           
-           
             if (EsBinario(valor))
             {
                 int longitudValor = valor.Length;
@@ -119,43 +109,34 @@ namespace Entidades
                 
 
                 for (int i = 0; i < longitudValor; i++)
-                {
-                    //los caracteres '0' y '1' tienen valores ASCII consecutivos
-                    //codigo ascci de 0 == 48, codigo ascci de 1 == 49;
-                    //si valor[i] es '0' 48-48 digito = 0; si es '1', 49 -48 digito = 1;
-                    //transformamos el valor representando en char a el valor integer correspondiente;
+                { 
                     digito = valor[i] - '0';
 
-                    //multiplicamos digito por 2 elevado a cada una de las posiciones del binario, como siempre es el 2 el que se eleva,
-                    //es indistinto que posicion se eleva primero, en este caso, comenzamos desde la posicion mas a la derecha(menos significativa) hacia la izquierda.
-                    //el digito va desde la izquierda hacia la derecha comenzando en 0;
-                    //elevamos y casteamos a integuer porque pow retorna un double y vamos a despreciar los decimales
-                    //longitudValor - 1 - longitudValor -1 + i deberia funcionar tambien, si queres verlo de izquierda a derecha
-                   // resultado += digito * (int)Math.Pow(2, longitudValor - 1 - longitudValor - 1 + i); no esto no arranca
-                   //Los digitos son siempre 0 y 1, las elevaciones son siempre sobre el 2, y esto se va sumando con la interacion, asi que es indistinto, que un digito se multiplique por el 2 elevado a otra posicion, daria lo mismo
-                   //Lo que pasa, es que la  cuenta manual, es mas logico hacerla posicion por posicion, pero aca se puede resolver asi.
-                   // lo importante es que todos los digitos se multiplican y que todas las posiciones se elevan con el 2, es indistinto el orden
                     valorDecimal += digito * (int)Math.Pow(2, longitudValor - 1 - i);
                 }
 
                 return valorDecimal;
             }
             
-
             return valorDecimal;
         }
+
+        /// <summary>
+        /// Convierte un numero en sistema decimal a binario y lo retorna.
+        /// </summary>
+        /// <param name="valor"></param>numero en sistema decimal.
+        /// <returns></returns>
         private string DecimalABinario(string valor)
         {
             string valorBinario = "Numero invalido";
 
-            //valido que sea un entero positivo;
             if (!(string.IsNullOrEmpty(valor)))
             {
                 if (decimal.TryParse(valor, out decimal valorIngresado))
                 {
                     
                     int numeroEntero = (int)valorIngresado;
-                    //caso de que el decimal sea 0
+                    
                     if (numeroEntero == 0)
                     {
                         valorBinario = "0";
@@ -166,7 +147,6 @@ namespace Entidades
                         valorBinario = string.Empty;
                         while (numeroEntero > 0)
                         {
-
                             resto = numeroEntero % 2;
                             numeroEntero /= 2;
                             valorBinario = resto.ToString() + valorBinario;
@@ -180,16 +160,19 @@ namespace Entidades
 
             return valorBinario;
         }
-        //donde uso este metodo? lo puse en el getter de onda
+       
         private string DecimalABinario(int valor)
         {
             return DecimalABinario(valor.ToString());
         }
         
-
+        /// <summary>
+        /// Convierte el valorNumerico a el sistema numerico recibido por parametro.
+        /// </summary>
+        /// <param name="sistema"></param>Enum Esistema
+        /// <returns></returns>
         public string ConvertirA(Esistema sistema)
         {
-            //por si el parametro fuera null is not null
             string retorno = "null";
 
             if (sistema == Esistema.Decimal)
@@ -198,12 +181,17 @@ namespace Entidades
             }
             else if(sistema == Esistema.Binario)
             {
-                
                 retorno = DecimalABinario(this.valorNumerico.ToString());
             }
            
             return retorno;
         }
+       
+        /// <summary>
+        /// Corrobora que el valor ingresado por parametro sea un numero en sist binario.
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
         private bool EsBinario(string valor)
         {
             bool retorno = true;
@@ -228,6 +216,13 @@ namespace Entidades
         }
 
 
+
+        /// <summary>
+        /// retorna un valor booleando, comparando los enum Esistema.
+        /// </summary>
+        /// <param name="sistema"></param>
+        /// <param name="numeracion"></param>
+        /// <returns></returns>
         public static bool operator ==(Esistema sistema, Numeracion numeracion)
         {
             return sistema == numeracion.Sistema;
@@ -237,6 +232,12 @@ namespace Entidades
             return !(sistema == numeracion.Sistema);
         }
 
+        /// <summary>
+        /// Retorna un valor booleano, comparando los Esistema de cada obj Numeracion.
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static bool operator ==(Numeracion n1, Numeracion n2)
         {
             return n1.Sistema == n2;
@@ -256,6 +257,12 @@ namespace Entidades
             return new Numeracion(n1.valorNumerico - n2.valorNumerico, n1.sistema);
         }
 
+        /// <summary>
+        /// Realiza una division entre dos obj Numeracion, la redondea a un maximo de 5 decimales.
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static Numeracion operator /(Numeracion n1, Numeracion n2)
         {
             return new Numeracion(Math.Round(n1.valorNumerico / n2.valorNumerico,5), n1.sistema);

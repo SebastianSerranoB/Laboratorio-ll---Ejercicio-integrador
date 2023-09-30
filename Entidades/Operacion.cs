@@ -12,7 +12,11 @@ namespace Entidades
         private Numeracion primerOperando;
         private Numeracion segundoOperando;
 
-
+        /// <summary>
+        /// Constructor, instancia un objeto Operacion con dos operandos de tipo Numeracion.
+        /// </summary>
+        /// <param name="primerOperando"></param>
+        /// <param name="segundoOperando"></param>
         public Operacion(Numeracion primerOperando, Numeracion segundoOperando)
         { 
             this.primerOperando = primerOperando;
@@ -49,7 +53,11 @@ namespace Entidades
                 }
             }
         }
-
+        /// <summary>
+        /// Ejectura la operacion correspondiente, retornando un obj numeracion con el resultado.
+        /// </summary>
+        /// <param name="operador"></param> indica la operacion a ejecutar.
+        /// <returns></returns>
         public Numeracion Operar(char operador)
         {
             if (this.PrimerOperando != this.SegundoOperando)
